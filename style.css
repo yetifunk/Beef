@@ -35,24 +35,56 @@ div#background {
     background-size: auto; */
     display: grid;
     grid-template-columns: 1.25fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 3fr 2fr 3fr;
+    grid-template-rows: 3fr 1fr 3fr;
     border: 10px solid black;
-    border-radius: 100px;
+    border-radius: 75px;
 }
 
 div.cell1 {
     grid-row: 1 / span 2;
+    padding: 15px;
+    border: 5px solid black;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.50);
+    color: white;
 }
 
 div.cell12 {
     grid-row: 3;
     grid-column: 1;
+    padding: 30px;
+    border: 5px solid black;
+    margin: 25px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.50);
+    color: white;
 }
 
 div.cell2, div.cell3, div.cell4, div.cell5, div.cell6 {
     grid-row: 1;
+    margin-top: 15px
 }
 
 div.cell7, div.cell8, div.cell9, div.cell10, div.cell11 {
     grid-row: 3;
+}
+
+img#card1, img#card2, img#card3, img#card4, img#card5, img#card6, img#card7, img#card8, img#card9, img#card10 {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 3px solid black;
+    border-radius: 20px;
+    filter: drop-shadow(5px 5px 2px black)
+}
+
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(1.3)
 }

@@ -1,1 +1,10 @@
-console.log("yoyoyo")
+document.getElementById("card1").src = `${deckOne[0].imagesrc}`;
+document.getElementById("card2").src = `${deckOne[1].imagesrc}`;
+document.getElementById("card3").src = `${deckOne[2].imagesrc}`;
+document.getElementById("card4").src = `${deckOne[3].imagesrc}`;
+document.getElementById("card5").src = `${deckOne[4].imagesrc}`;
+document.getElementById("card6").src = `${deckTwo[0].imagesrc}`;
+document.getElementById("card7").src = `${deckTwo[1].imagesrc}`;
+document.getElementById("card8").src = `${deckTwo[2].imagesrc}`;
+document.getElementById("card9").src = `${deckTwo[3].imagesrc}`;
+document.getElementById("card10").src = `${deckTwo[4].imagesrc}`;
