@@ -61,8 +61,5 @@ for (let i = 0; i < cardStats.length; i++) {
 
 const shuffled = cardDeck.sort(() => 0.5 - Math.random());
 
-let deckOne = cardDeck.splice(0, 5)
-let deckTwo = cardDeck.splice(0, 5)
-
-console.log(deckOne)
-console.log(deckTwo)
+let deckOne = cardDeck.splice(0, 5);
+let deckTwo = cardDeck.splice(0, 5);
