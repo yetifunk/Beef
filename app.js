@@ -29,11 +29,6 @@ for (let i = 0; i < deckTwo.length; i++) {
     playerDefense += deckTwo[i].defense;
 }
 
-
-console.log(compStrength)
-console.log(compAttack)
-console.log(compDefense)
-
 function updateStats () {
     document.getElementById("oppHP").innerText = "Hitpoints: " + compStrength;
     document.getElementById("oppATK").innerText = "Attack: " + compAttack;
@@ -45,30 +40,8 @@ function updateStats () {
 
 updateStats()
 
-let turn = 0;
-
 document.getElementById("attack-button").addEventListener
 document.getElementById("defense-button").addEventListener
 
-if (turn === 0) {
-    PLAYERTURN()
-}
+let turn = 0;
 
-function PLAYERTURN() {
-    document.getElementById("card6").addEventListener("click", CARDCHOICE);
-    document.getElementById("card7").addEventListener("click", CARDCHOICE);
-    document.getElementById("card8").addEventListener("click", CARDCHOICE);
-    document.getElementById("card9").addEventListener("click", CARDCHOICE);
-    document.getElementById("card10").addEventListener("click", CARDCHOICE);
-    function CARDCHOICE(target) {
-        console.log(target)
-        let choice = event.target
-        console.log(choice)
-        document.getElementById("attack-button").addEventListener("click", ATTACK)
-        // document.getElementById("defense-button").addEventListener("click" , DEFEND)
-        function ATTACK(action){
-            console.log(action)
-            console.log(event)
-        }
-    }
-}
