@@ -56,6 +56,12 @@ document.getElementById("defense-button").addEventListener("click", handlePlayer
 
 let attackButton = document.getElementById("attack-button")
 let defenseButton = document.getElementById("defense-button")
+let endTurnButton = document.getElementById("end-turn")
+
+endTurnButton.disabled = true
+endTurnButton.style.opacity = ".25"
+endTurnButton.style.backgroundColor = "grey"
+
 
 // attackbutton.disabled
 
@@ -105,6 +111,15 @@ function handlePlayerTurn () {
             }
         }
     }
+    endTurnButton.disabled = false
+    endTurnButton.style.opacity = ""
+    endTurnButton.style.backgroundColor = ""
+    attackButton.disabled = true
+    attackButton.style.opacity = ".25"
+    attackButton.style.backgroundColor = "grey"
+    defenseButton.disabled = true
+    defenseButton.style.opacity = ".25"
+    defenseButton.style.backgroundColor = "grey"
 }
 
 function handleComputerTurn () {
@@ -127,4 +142,13 @@ function handleComputerTurn () {
             }
         }
     }
+    endTurnButton.disabled = true
+    endTurnButton.style.opacity = ".25"
+    endTurnButton.style.backgroundColor = "grey"
+    attackButton.disabled = false
+    attackButton.style.opacity = ""
+    attackButton.style.backgroundColor = ""
+    defenseButton.disabled = false
+    defenseButton.style.opacity = ""
+    defenseButton.style.backgroundColor = ""
 }
