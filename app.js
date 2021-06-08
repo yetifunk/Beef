@@ -54,12 +54,16 @@ updateStats()
 document.getElementById("attack-button").addEventListener("click", handlePlayerTurn)
 document.getElementById("defense-button").addEventListener("click", handlePlayerTurn)
 
-let turn = 1;
+let attackButton = document.getElementById("attack-button")
+let defenseButton = document.getElementById("defense-button")
 
-// while (turn % 2 === 0) {
-//     document.getElementById("attack-button").removeEventListener
-//     document.getElementById("defense-button").removeEventListener
-// 
+// attackbutton.disabled
+
+let playerDamageDone = 0;
+let playerDefenseApplied = 0;
+let computerDamageDone = 0;
+let computerDefenseApplied = 0;
+let turn = 1;
 
 // }    console.log(event.target.innerText)
 
@@ -74,12 +78,19 @@ function checkHealth () {
     console.log(deckOne)
 }
 
+//Player and Computer Turn Functions.
+//For player, check if attack or defend is chosen.
+//For computer, 50/50 chance of attack or defense.
+//Attack and Defense successes are based on chance.
+//Card[i] fights Card[i]
+
 function handlePlayerTurn () {
     if (event.target.innerText === "Attack") {
         for (let i = 0; i < deckTwo.length; i++) {
             if (Math.random() < .4) {
                 deckOne[i].hitpoints -= deckTwo[i].attack
                 compStrength -= deckTwo[i].attack
+                playerDamageDone += deckTwo[i].attack
                 updateStats()
             }
             checkHealth();
@@ -89,9 +100,31 @@ function handlePlayerTurn () {
             if (Math.random() < .9) {
                 deckTwo[i].hitpoints += deckTwo[i].defense
                 playerStrength += deckTwo[i].defense
+                playerDefenseApplied += deckTwo[i].defense
                 updateStats()
             }
         }
     }
 }
-// function handleComputerTurn
+
+function handleComputerTurn () {
+    if (Math.random() <= .5) {
+        for (let i = 0; i < deckOne.length; i++) {
+            if (Math.random() < .4) {
+                deckTwo[i].hitpoints -= deckOne[i].attack
+                playerStrength -= deckOne[i].attack
+                computerDamageDone += deckOne[i].attack
+                updateStats()
+            }
+        }
+    } else {
+        for (let i = 0; i < deckOne.length; i++) {
+            if (Math.random() < .9) {
+                deckOne[i].hitpoints += deckOne[i].defense
+                compStrength += deckOne[i].defense
+                computerDefenseApplied += deckOne[i].defense
+                updateStats()
+            }
+        }
+    }
+}
