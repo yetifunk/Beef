@@ -15,6 +15,11 @@ let compDefense = 0;
 let playerStrength = 0;
 let playerAttack = 0;
 let playerDefense = 0;
+let playerDamageDone = 0;
+let playerDefenseApplied = 0;
+let computerDamageDone = 0;
+let computerDefenseApplied = 0;
+let turn = 1;
 
 for (let i = 0; i < deckOne.length; i++) {
     compStrength += deckOne[i].hitpoints;
@@ -51,27 +56,18 @@ function updateStats () {
 
 updateStats()
 
-document.getElementById("attack-button").addEventListener("click", handlePlayerTurn)
-document.getElementById("defense-button").addEventListener("click", handlePlayerTurn)
 
 let attackButton = document.getElementById("attack-button")
 let defenseButton = document.getElementById("defense-button")
 let endTurnButton = document.getElementById("end-turn")
 
+attackButton.addEventListener("click", handlePlayerTurn)
+defenseButton.addEventListener("click", handlePlayerTurn)
+endTurnButton.addEventListener("click", handleComputerTurn)
+
 endTurnButton.disabled = true
 endTurnButton.style.opacity = ".25"
 endTurnButton.style.backgroundColor = "grey"
-
-
-// attackbutton.disabled
-
-let playerDamageDone = 0;
-let playerDefenseApplied = 0;
-let computerDamageDone = 0;
-let computerDefenseApplied = 0;
-let turn = 1;
-
-// }    console.log(event.target.innerText)
 
 function checkHealth () {
     for (let i = 0; i < deckOne.length; i++) {
@@ -103,7 +99,7 @@ function handlePlayerTurn () {
         }
     } else if (event.target.innerText === "Defend") {
         for (let i = 0; i < deckTwo.length; i++) {
-            if (Math.random() < .9) {
+            if (Math.random() < .8) {
                 deckTwo[i].hitpoints += deckTwo[i].defense
                 playerStrength += deckTwo[i].defense
                 playerDefenseApplied += deckTwo[i].defense
@@ -134,7 +130,7 @@ function handleComputerTurn () {
         }
     } else {
         for (let i = 0; i < deckOne.length; i++) {
-            if (Math.random() < .9) {
+            if (Math.random() < .8) {
                 deckOne[i].hitpoints += deckOne[i].defense
                 compStrength += deckOne[i].defense
                 computerDefenseApplied += deckOne[i].defense
