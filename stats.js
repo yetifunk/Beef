@@ -1,3 +1,5 @@
+//Card Statistics
+
 const cardStats = [
     ["21 Savage",134,51,40,"/assets/21SAVAGE.png"],
     ["Andre 3000",140,60,31,"/assets/ANDRE3000.png"],
@@ -37,6 +39,8 @@ const cardStats = [
 ]
 
 cardDeck = [];
+
+//Class Setup, Deck Creation, Shuffling and Dealing
 
 class Card {
     constructor(name, hitpoints, attack, defense, imagesrc) {
