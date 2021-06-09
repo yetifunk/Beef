@@ -84,13 +84,23 @@ endTurnButton.style.backgroundColor = "grey"
 
 function checkHealth () {
     for (let i = 0; i < deckOne.length; i++) {
-        if (deckOne[i].hitpoints <= 0) {
-            delete deckOne[i]
+        if (deckOne[i].hitpoints <= 0 || deckOne[i].hitpoints === "K.I.A") {
+            deckOne[i].hitpoints = "K.I.A"
+            updateStats();
+        } else {
+            continue
+        } 
+    }
+    for (let i = 0; i < deckTwo.length; i++) {
+        if (deckTwo[i].hitpoints <= 0 || deckTwo[i].hitpoints === "K.I.A") {
+            deckTwo[i].hitpoints = "K.I.A"
+            updateStats();
         } else {
             continue
         }
     }
 }
+
 
 //Player and Computer Turn Functions.
 //For player, check if attack or defend is chosen.
@@ -99,11 +109,20 @@ function checkHealth () {
 //Card[i] fights Card[i]
 
 function handlePlayerTurn () {
+    checkHealth();
     if (event.target.innerText === "Attack") {
         for (let i = 0; i < deckTwo.length; i++) {
-            if (Math.random() < .4) {
+            if (deckTwo[i].hitpoints === "K.I.A" || deckOne[i].hitpoints === "K.I.A") {
+                continue
+            } else if (Math.random() < .4) {
                 deckOne[i].hitpoints -= deckTwo[i].attack
-                compStrength -= deckTwo[i].attack
+                if (deckOne[i].hitpoints < 0) {
+                    compStrength -= deckTwo[i].attack
+                    compStrength += Math.abs(deckOne[i].hitpoints)
+                    updateStats();
+                } else {
+                    compStrength -= deckTwo[i].attack
+                }    
                 playerDamageDone += deckTwo[i].attack
                 updateStats()
             }
@@ -111,39 +130,59 @@ function handlePlayerTurn () {
         }
     } else if (event.target.innerText === "Defend") {
         for (let i = 0; i < deckTwo.length; i++) {
-            if (Math.random() < .8) {
+            if (deckTwo[i].hitpoints === "K.I.A") {
+                continue
+            } else if (Math.random() < .8) {
                 deckTwo[i].hitpoints += deckTwo[i].defense
                 playerStrength += deckTwo[i].defense
                 playerDefenseApplied += deckTwo[i].defense
                 updateStats()
             }
+            checkHealth();
         }
     }
     turn += 1
+    checkHealth();
+    console.log(deckOne)
+    console.log(deckTwo)
     handlePlayerTurnOver()
 }
 
 function handleComputerTurn () {
+    checkHealth();
     if (Math.random() <= .7) {
         for (let i = 0; i < deckOne.length; i++) {
-            if (Math.random() < .4) {
+            if (deckOne[i].hitpoints === "K.I.A" || deckTwo[i].hitpoints === "K.I.A") {
+                continue
+            } else if (Math.random() < .4) {
                 deckTwo[i].hitpoints -= deckOne[i].attack
-                playerStrength -= deckOne[i].attack
+                if (deckTwo[i].hitpoints < 0) {
+                    playerStrength -= deckOne[i].attack
+                    playerStrength += Math.abs(deckTwo[i].hitpoints)
+                    updateStats();
+                } else { 
+                    playerStrength -= deckOne[i].attack
+                }
                 computerDamageDone += deckOne[i].attack
                 updateStats()
             }
+            checkHealth();
         }
     } else {
         for (let i = 0; i < deckOne.length; i++) {
-            if (Math.random() < .8) {
+            if (deckOne[i].hitpoints === "K.I.A") {
+                continue
+            } else if (Math.random() < .8) {
                 deckOne[i].hitpoints += deckOne[i].defense
                 compStrength += deckOne[i].defense
                 computerDefenseApplied += deckOne[i].defense
                 updateStats()
             }
+            checkHealth();
         }
     }
     turn += 1
+    checkHealth();
     handleComputerTurnOver()
 }
 
