@@ -1,3 +1,14 @@
+const startButton = document.getElementById("startgame")
+startButton.addEventListener("click", START)
+const intro = document.getElementById("intro-container")
+const gameboard = document.getElementById("background")
+function START () {
+    intro.style.visibility = "hidden"
+    gameboard.style.visibility = "visible"
+
+}
+console.log(startButton)
+
 document.getElementById("card1").src = `${deckOne[0].imagesrc}`;
 document.getElementById("card2").src = `${deckOne[1].imagesrc}`;
 document.getElementById("card3").src = `${deckOne[2].imagesrc}`;
@@ -20,6 +31,8 @@ let playerDefenseApplied = 0;
 let computerDamageDone = 0;
 let computerDefenseApplied = 0;
 let turn = 0;
+let compKills = 0;
+let playerKills = 0;
 
 for (let i = 0; i < deckOne.length; i++) {
     compStrength += deckOne[i].hitpoints;
@@ -117,6 +130,7 @@ function handlePlayerTurn () {
             } else if (Math.random() < .4) {
                 deckOne[i].hitpoints -= deckTwo[i].attack
                 if (deckOne[i].hitpoints < 0) {
+                    playerKills += 1
                     compStrength -= deckTwo[i].attack
                     compStrength += Math.abs(deckOne[i].hitpoints)
                     updateStats();
@@ -143,8 +157,6 @@ function handlePlayerTurn () {
     }
     turn += 1
     checkHealth();
-    console.log(deckOne)
-    console.log(deckTwo)
     handlePlayerTurnOver()
 }
 
@@ -157,6 +169,7 @@ function handleComputerTurn () {
             } else if (Math.random() < .4) {
                 deckTwo[i].hitpoints -= deckOne[i].attack
                 if (deckTwo[i].hitpoints < 0) {
+                    compKills += 1
                     playerStrength -= deckOne[i].attack
                     playerStrength += Math.abs(deckTwo[i].hitpoints)
                     updateStats();

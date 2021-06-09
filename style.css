@@ -4,8 +4,9 @@
 
 div#intro-container {
     display: grid;
-    position: relative;
-    display: none;
+    position: absolute;
+    visibility: visible;
+    width: 100%;
 }
 
 img#introimg {
@@ -37,12 +38,13 @@ button.start-game {
     padding: 10px 40px 10px 40px;
     border: 5px solid black;
     border-radius: 20px;
-    background-color: rgb(33, 112, 33);
+    background-color: rgb(3,109,57);
     color: white;
-    font-size: larger;
+    font-size: 30px;
 }
 
 div#background {
+    position: absolute;
     background-image: url("/assets/bricks.jpg");
     margin: auto;
     max-width: 100%;
@@ -52,6 +54,7 @@ div#background {
     grid-template-rows: 3fr 1fr 3fr;
     border: 10px solid black;
     border-radius: 75px;
+    visibility: hidden;
 }
 
 div.cell1 {
