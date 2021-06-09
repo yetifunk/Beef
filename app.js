@@ -105,7 +105,7 @@ function checkHealth () {
     for (let i = 0; i < deckOne.length; i++) {
         if (deckOne[i].hitpoints <= 0 || deckOne[i].hitpoints === "K.I.A") {
             deckOne[i].hitpoints = "K.I.A"
-            deckOne[i].imagesrc= "/assets/cardback.png"
+            deckOne[i].imagesrc= "./assets/cardback.png"
             UPDATECARDS()
             updateStats();
         } else {
@@ -115,7 +115,7 @@ function checkHealth () {
     for (let i = 0; i < deckTwo.length; i++) {
         if (deckTwo[i].hitpoints <= 0 || deckTwo[i].hitpoints === "K.I.A") {
             deckTwo[i].hitpoints = "K.I.A"
-            deckTwo[i].imagesrc = "/assets/cardback.png"
+            deckTwo[i].imagesrc = "./assets/cardback.png"
             UPDATECARDS()
             updateStats();
         } else {
