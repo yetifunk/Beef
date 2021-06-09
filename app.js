@@ -19,7 +19,7 @@ let playerDamageDone = 0;
 let playerDefenseApplied = 0;
 let computerDamageDone = 0;
 let computerDefenseApplied = 0;
-let turn = 1;
+let turn = 0;
 
 for (let i = 0; i < deckOne.length; i++) {
     compStrength += deckOne[i].hitpoints;
@@ -42,19 +42,32 @@ function updateStats () {
     document.getElementById("playHP").innerText = "Hitpoints: " + playerStrength;
     document.getElementById("playATK").innerText = "Attack: " + playerAttack;
     document.getElementById("playDEF").innerText = "Defense: " + playerDefense;
-    document.getElementById("compone").innerText = `HP Remaining: ` + deckOne[0].hitpoints
-    document.getElementById("playone").innerText = `HP Remaining: ` + deckTwo[0].hitpoints
-    document.getElementById("comptwo").innerText = `HP Remaining: ` + deckOne[1].hitpoints
-    document.getElementById("playtwo").innerText = `HP Remaining: ` + deckTwo[1].hitpoints
-    document.getElementById("compthree").innerText = `HP Remaining: ` + deckOne[2].hitpoints
-    document.getElementById("playthree").innerText = `HP Remaining: ` + deckTwo[2].hitpoints
-    document.getElementById("compfour").innerText = `HP Remaining: ` + deckOne[3].hitpoints
-    document.getElementById("playfour").innerText = `HP Remaining: ` + deckTwo[3].hitpoints
-    document.getElementById("compfive").innerText = `HP Remaining: ` + deckOne[4].hitpoints
-    document.getElementById("playfive").innerText = `HP Remaining: ` + deckTwo[4].hitpoints
+
+
+    document.getElementById("compone").innerText = `HP Remaining: ` + deckOne[0]?.hitpoints
+    document.getElementById("playone").innerText = `HP Remaining: ` + deckTwo[0]?.hitpoints
+    document.getElementById("comptwo").innerText = `HP Remaining: ` + deckOne[1]?.hitpoints
+    document.getElementById("playtwo").innerText = `HP Remaining: ` + deckTwo[1]?.hitpoints
+    document.getElementById("compthree").innerText = `HP Remaining: ` + deckOne[2]?.hitpoints
+    document.getElementById("playthree").innerText = `HP Remaining: ` + deckTwo[2]?.hitpoints
+    document.getElementById("compfour").innerText = `HP Remaining: ` + deckOne[3]?.hitpoints
+    document.getElementById("playfour").innerText = `HP Remaining: ` + deckTwo[3]?.hitpoints
+    document.getElementById("compfive").innerText = `HP Remaining: ` + deckOne[4]?.hitpoints
+    document.getElementById("playfive").innerText = `HP Remaining: ` + deckTwo[4]?.hitpoints
 }
 
 updateStats()
+
+    // document.getElementById("compone")
+    // document.getElementById("playone")
+    // document.getElementById("comptwo")
+    // document.getElementById("playtwo")
+    // document.getElementById("compthree")
+    // document.getElementById("playthree")
+    // document.getElementById("compfour")
+    // document.getElementById("playfour")
+    // document.getElementById("compfive")
+    // document.getElementById("playfive")
 
 
 let attackButton = document.getElementById("attack-button")
@@ -77,7 +90,6 @@ function checkHealth () {
             continue
         }
     }
-    console.log(deckOne)
 }
 
 //Player and Computer Turn Functions.
@@ -107,19 +119,12 @@ function handlePlayerTurn () {
             }
         }
     }
-    endTurnButton.disabled = false
-    endTurnButton.style.opacity = ""
-    endTurnButton.style.backgroundColor = ""
-    attackButton.disabled = true
-    attackButton.style.opacity = ".25"
-    attackButton.style.backgroundColor = "grey"
-    defenseButton.disabled = true
-    defenseButton.style.opacity = ".25"
-    defenseButton.style.backgroundColor = "grey"
+    turn += 1
+    handlePlayerTurnOver()
 }
 
 function handleComputerTurn () {
-    if (Math.random() <= .5) {
+    if (Math.random() <= .7) {
         for (let i = 0; i < deckOne.length; i++) {
             if (Math.random() < .4) {
                 deckTwo[i].hitpoints -= deckOne[i].attack
@@ -138,6 +143,23 @@ function handleComputerTurn () {
             }
         }
     }
+    turn += 1
+    handleComputerTurnOver()
+}
+
+function handlePlayerTurnOver () {
+    endTurnButton.disabled = false
+    endTurnButton.style.opacity = ""
+    endTurnButton.style.backgroundColor = ""
+    attackButton.disabled = true
+    attackButton.style.opacity = ".25"
+    attackButton.style.backgroundColor = "grey"
+    defenseButton.disabled = true
+    defenseButton.style.opacity = ".25"
+    defenseButton.style.backgroundColor = "grey"
+}
+
+function handleComputerTurnOver () {
     endTurnButton.disabled = true
     endTurnButton.style.opacity = ".25"
     endTurnButton.style.backgroundColor = "grey"
