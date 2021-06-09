@@ -9,16 +9,22 @@ function START () {
 }
 console.log(startButton)
 
-document.getElementById("card1").src = `${deckOne[0].imagesrc}`;
-document.getElementById("card2").src = `${deckOne[1].imagesrc}`;
-document.getElementById("card3").src = `${deckOne[2].imagesrc}`;
-document.getElementById("card4").src = `${deckOne[3].imagesrc}`;
-document.getElementById("card5").src = `${deckOne[4].imagesrc}`;
-document.getElementById("card6").src = `${deckTwo[0].imagesrc}`;
-document.getElementById("card7").src = `${deckTwo[1].imagesrc}`;
-document.getElementById("card8").src = `${deckTwo[2].imagesrc}`;
-document.getElementById("card9").src = `${deckTwo[3].imagesrc}`;
-document.getElementById("card10").src = `${deckTwo[4].imagesrc}`;
+function UPDATECARDS () {
+    document.getElementById("card1").src = `${deckOne[0].imagesrc}`;
+    document.getElementById("card2").src = `${deckOne[1].imagesrc}`;
+    document.getElementById("card3").src = `${deckOne[2].imagesrc}`;
+    document.getElementById("card4").src = `${deckOne[3].imagesrc}`;
+    document.getElementById("card5").src = `${deckOne[4].imagesrc}`;
+    document.getElementById("card6").src = `${deckTwo[0].imagesrc}`;
+    document.getElementById("card7").src = `${deckTwo[1].imagesrc}`;
+    document.getElementById("card8").src = `${deckTwo[2].imagesrc}`;
+    document.getElementById("card9").src = `${deckTwo[3].imagesrc}`;
+    document.getElementById("card10").src = `${deckTwo[4].imagesrc}`;
+}
+
+UPDATECARDS()
+
+console.log(deckTwo[0].imagesrc)
 
 let compStrength = 0;
 let compAttack = 0;
@@ -99,6 +105,8 @@ function checkHealth () {
     for (let i = 0; i < deckOne.length; i++) {
         if (deckOne[i].hitpoints <= 0 || deckOne[i].hitpoints === "K.I.A") {
             deckOne[i].hitpoints = "K.I.A"
+            deckOne[i].imagesrc= "/assets/cardback.png"
+            UPDATECARDS()
             updateStats();
         } else {
             continue
@@ -107,6 +115,8 @@ function checkHealth () {
     for (let i = 0; i < deckTwo.length; i++) {
         if (deckTwo[i].hitpoints <= 0 || deckTwo[i].hitpoints === "K.I.A") {
             deckTwo[i].hitpoints = "K.I.A"
+            deckTwo[i].imagesrc = "/assets/cardback.png"
+            UPDATECARDS()
             updateStats();
         } else {
             continue
