@@ -82,7 +82,7 @@ div.cell12 {
     flex-direction: column;
 }
 
-button#attack-button, button#defense-button, button#end-turn {
+button#attack-button, button#defense-button, button#end-turn, button#newgamebutton {
     padding: 10px 30px 10px 30px;
     font-size: 30px;
     background-color: rgba(138, 43, 226, .50);
@@ -139,4 +139,36 @@ p {
     margin-right: 15px;
     background-color: rgba(0, 0, 0, 0.30);
     filter: drop-shadow(5px 5px 2px black)
+}
+
+div#game-end {
+    position: absolute;
+    background-image: url("./assets/bricks.jpg");
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    /* display: grid; */
+    /* grid-template-columns: 1.25fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr 3fr; */
+    border: 10px solid black;
+    border-radius: 75px;
+    visibility: hidden;
+    color: white;
+}
+
+div#game-end-stats {
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-shadow: 6px 6px 8px black;
+}
+
+div#statbox {
+    border: 5px solid black;
+    margin-top: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.50);
+    color: white;
 }

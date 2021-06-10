@@ -2,12 +2,12 @@ const startButton = document.getElementById("startgame")
 startButton.addEventListener("click", START)
 const intro = document.getElementById("intro-container")
 const gameboard = document.getElementById("background")
+
 function START () {
     intro.style.visibility = "hidden"
     gameboard.style.visibility = "visible"
-
 }
-console.log(startButton)
+
 
 function UPDATECARDS () {
     document.getElementById("card1").src = `${deckOne[0].imagesrc}`;
@@ -23,8 +23,6 @@ function UPDATECARDS () {
 }
 
 UPDATECARDS()
-
-console.log(deckTwo[0].imagesrc)
 
 let compStrength = 0;
 let compAttack = 0;
@@ -45,13 +43,12 @@ for (let i = 0; i < deckOne.length; i++) {
     compAttack += deckOne[i].attack;
     compDefense += deckOne[i].defense;
 }
+
 for (let i = 0; i < deckTwo.length; i++) {
     playerStrength += deckTwo[i].hitpoints;
     playerAttack += deckTwo[i].attack;
     playerDefense += deckTwo[i].defense;
 }
-
-
 
 function updateStats () {
 
@@ -61,7 +58,6 @@ function updateStats () {
     document.getElementById("playHP").innerText = "Hitpoints: " + playerStrength;
     document.getElementById("playATK").innerText = "Attack: " + playerAttack;
     document.getElementById("playDEF").innerText = "Defense: " + playerDefense;
-
 
     document.getElementById("compone").innerText = `HP Remaining: ` + deckOne[0]?.hitpoints
     document.getElementById("playone").innerText = `HP Remaining: ` + deckTwo[0]?.hitpoints
@@ -76,18 +72,6 @@ function updateStats () {
 }
 
 updateStats()
-
-    // document.getElementById("compone")
-    // document.getElementById("playone")
-    // document.getElementById("comptwo")
-    // document.getElementById("playtwo")
-    // document.getElementById("compthree")
-    // document.getElementById("playthree")
-    // document.getElementById("compfour")
-    // document.getElementById("playfour")
-    // document.getElementById("compfive")
-    // document.getElementById("playfive")
-
 
 let attackButton = document.getElementById("attack-button")
 let defenseButton = document.getElementById("defense-button")
@@ -122,8 +106,10 @@ function checkHealth () {
             continue
         }
     }
+    if (turn === 10) {
+        endGame();
+    }
 }
-
 
 //Player and Computer Turn Functions.
 //For player, check if attack or defend is chosen.
@@ -231,4 +217,44 @@ function handleComputerTurnOver () {
     defenseButton.disabled = false
     defenseButton.style.opacity = ""
     defenseButton.style.backgroundColor = ""
+}
+
+const endScreen = document.getElementById("game-end-stats")
+const endScreenContainer = document.getElementById("game-end")
+function endGame () {
+    let playEnd = playerDamageDone + (playerKills * 100) - (computerDefenseApplied / 2)
+    let compEnd = computerDamageDone + (compKills * 100) - (playerDefenseApplied / 2)
+    if (playEnd > compEnd) {
+        winner = "Player Wins!"
+    } else if (compEnd > playEnd) {
+        winner = "Computer Wins!"
+    } else if (compEnd = playEnd) {
+        winner = "Its A Tie!"
+    }
+
+    endScreenContainer.style.visibility = "visible"
+    endScreen.innerHTML = `
+    <h1>Game Stats</h1>
+    <br>
+    <h2>Player:</h2>
+    <h2>Damage Dealt: ${playerDamageDone}</h2>
+    <h2>Defense Applied: ${playerDefenseApplied}</h2>
+    <h2>Kills: ${playerKills}</h2>
+    <h2>Final Score: ${playEnd}</h2>
+    <br>
+    <h2>Computer:</h2>
+    <h2>Damage Dealt: ${computerDamageDone}</h2>
+    <h2>Defense Applied: ${computerDefenseApplied}</h2>
+    <h2>Kills: ${compKills}</h2>
+    <h2>Final Score: ${compEnd}
+    <br>
+    <h1>${winner}
+    <br>
+    <button type="button" id="newgamebutton">New Game</button>
+    `
+    document.getElementById("newgamebutton").addEventListener("click", NEWGAME)
+}
+
+function NEWGAME () {
+    location.reload();
 }
