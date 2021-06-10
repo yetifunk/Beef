@@ -106,7 +106,7 @@ function checkHealth () {
             continue
         }
     }
-    if (turn === 10) {
+    if (turn === 16) {
         endGame();
     }
 }
@@ -234,23 +234,23 @@ function endGame () {
 
     endScreenContainer.style.visibility = "visible"
     endScreen.innerHTML = `
-    <h1>Game Stats</h1>
-    <br>
-    <h2>Player:</h2>
-    <h2>Damage Dealt: ${playerDamageDone}</h2>
-    <h2>Defense Applied: ${playerDefenseApplied}</h2>
-    <h2>Kills: ${playerKills}</h2>
-    <h2>Final Score: ${playEnd}</h2>
-    <br>
-    <h2>Computer:</h2>
-    <h2>Damage Dealt: ${computerDamageDone}</h2>
-    <h2>Defense Applied: ${computerDefenseApplied}</h2>
-    <h2>Kills: ${compKills}</h2>
-    <h2>Final Score: ${compEnd}
-    <br>
-    <h1>${winner}
-    <br>
-    <button type="button" id="newgamebutton">New Game</button>
+        <h1>Game Stats</h1>
+        <br>
+        <h2>Player:</h2>
+        <h2>Damage Dealt: ${playerDamageDone}</h2>
+        <h2>Defense Applied: ${playerDefenseApplied}</h2>
+        <h2>Kills: ${playerKills}</h2>
+        <h2>Final Score: ${playEnd}</h2>
+        <br>
+        <h2>Computer:</h2>
+        <h2>Damage Dealt: ${computerDamageDone}</h2>
+        <h2>Defense Applied: ${computerDefenseApplied}</h2>
+        <h2>Kills: ${compKills}</h2>
+        <h2>Final Score: ${compEnd}
+        <br>
+        <h1>${winner}
+        <br>
+        <button type="button" id="newgamebutton">New Game</button>
     `
     document.getElementById("newgamebutton").addEventListener("click", NEWGAME)
 }
