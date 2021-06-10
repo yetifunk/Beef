@@ -159,9 +159,6 @@ div#game-end {
     margin: auto;
     width: 100%;
     height: 100%;
-    /* display: grid; */
-    /* grid-template-columns: 1.25fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 3fr 1fr 3fr; */
     border: 10px solid black;
     border-radius: 75px;
     visibility: hidden;
