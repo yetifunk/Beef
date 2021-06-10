@@ -222,8 +222,8 @@ function handleComputerTurnOver () {
 const endScreen = document.getElementById("game-end-stats")
 const endScreenContainer = document.getElementById("game-end")
 function endGame () {
-    let playEnd = playerDamageDone + (playerKills * 100) - (computerDefenseApplied / 2)
-    let compEnd = computerDamageDone + (compKills * 100) - (playerDefenseApplied / 2)
+    let playEnd = Math.round(playerDamageDone + (playerKills * 100) - (computerDefenseApplied / 2))
+    let compEnd = Math.round(computerDamageDone + (compKills * 100) - (playerDefenseApplied / 2))
     if (playEnd > compEnd) {
         winner = "Player Wins!"
     } else if (compEnd > playEnd) {
