@@ -43,6 +43,19 @@ button.start-game {
     font-size: 30px;
 }
 
+button.view-deck {
+    position: absolute;
+    margin-left: 60%;
+    margin-top: 35%;
+    padding: 10px 40px 10px 40px;
+    border: 5px solid black;
+    border-radius: 20px;
+    background-color: rgb(3,109,57);
+    color: white;
+    font-size: 30px;
+
+}
+
 div#background {
     position: absolute;
     background-image: url("./assets/bricks.jpg");
